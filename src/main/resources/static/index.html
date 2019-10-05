@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+		<title>Restaurants</title>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Restaurants</h1>
+			<div class="row">
+				<div class="form-group col-sm-6">
+					<label for="sortBy">Sort By</label>
+					<select name="sortBy" id="sortBy" class="form-control">
+						<option value="averageProductPrice">averageProductPrice</option>
+						<option value="bestMatch">bestMatch</option>
+						<option value="deliveryCosts">deliveryCosts</option>
+						<option value="distance">distance</option>
+						<option value="minCost">minCost</option>
+						<option value="newest">newest</option>
+						<option value="popularity">popularity</option>
+						<option value="ratingAverage">ratingAverage</option>
+						<option value="topRestaurant">topRestaurant</option>
+					</select>
+				</div>
+				<div class="form-group col-sm-6">
+					<label for="nameSearch">Search by Name</label>
+					<input type="text" id="nameSearch" class="form-control" placeholder="Search">
+				</div>
+			</div>
+			<table id="list" class="table">
+				<thead>
+					<tr>
+						<th>Favorite</th>
+						<th>Name</th>
+						<th>Status</th>
+						<th>Selected Sort</th>
+						<th>Sort Value</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table>
+		</div>
+
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" 
+			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+		<script scoped>
+			$(document).ready(function() {
+				$.get('http://localhost:9090/restaurant/list', (data) => {
+					buildList(data);
+				});
+
+				$('#sortBy').change(e => refresh());
+
+				$('#nameSearch').change(e => refresh());
+
+				function markFavorite(id, val) {
+					$.ajax({
+						url: 'http://localhost:9090/restaurant/' + id,
+						method: 'PATCH',
+						data: JSON.stringify({ favorite: val }),
+						dataType: 'json',
+						contentType: "application/json",
+					}).done(() => { refresh(); });
+				}
+
+				function refresh() {
+					$.get('http://localhost:9090/restaurant/listWithParameters', 
+						{
+							sort: $('#sortBy').val(),
+							nameSearch: $('#nameSearch').val()
+						})
+						.done(buildList);
+				}
+
+				function buildList(items) {
+					$('#list tbody tr').remove();
+					items.forEach((item) => {
+						let that = item;
+						let row = document.createElement('tr');
+						let favCol = document.createElement('td');
+						let favCb = document.createElement('input');
+						favCb.onchange = function (e) {
+							//	console.log('make favorite' + that.id + e.target.value);
+							markFavorite(that.id, e.target.checked);
+						};
+						favCb.type = 'checkbox';
+						favCb.checked = item.favorite;
+						favCol.appendChild(favCb);
+						let nameCol = document.createElement('td');
+						nameCol.innerText = item.name;
+						let statusCol = document.createElement('td');
+						statusCol.innerText = item.status;
+						let sortCol = document.createElement('td');
+						sortCol.innerText = item.selectedSortName;
+						let sortVCol = document.createElement('td');
+						sortVCol.innerText = item.selectedSortValue;
+						row.appendChild(favCol);
+						row.appendChild(nameCol);
+						row.appendChild(statusCol);
+						row.appendChild(sortCol);
+						row.appendChild(sortVCol);
+						$('#list').append(row);
+					});
+				}
+
+			});
+
+		</script>
+	</body>
+</html>
