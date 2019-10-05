@@ -60,7 +60,7 @@
 
 		<script scoped>
 			$(document).ready(function() {
-				$.get('https://leorestaurantfinder.herokuapp.com/list', (data) => {
+				$.get('https://leorestaurantfinder.herokuapp.com/restaurant/list', (data) => {
 					buildList(data);
 				});
 
@@ -70,7 +70,7 @@
 
 				function markFavorite(id, val) {
 					$.ajax({
-						url: 'https://leorestaurantfinder.herokuapp.com/' + id,
+						url: 'https://leorestaurantfinder.herokuapp.com/restaurant/' + id,
 						method: 'PATCH',
 						data: JSON.stringify({ favorite: val }),
 						dataType: 'json',
@@ -79,7 +79,7 @@
 				}
 
 				function refresh() {
-					$.get('https://leorestaurantfinder.herokuapp.com/listWithParameters', 
+					$.get('https://leorestaurantfinder.herokuapp.com/restaurant/listWithParameters', 
 						{
 							sort: $('#sortBy').val(),
 							nameSearch: $('#nameSearch').val()
