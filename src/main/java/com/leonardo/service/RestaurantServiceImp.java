@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -150,7 +149,7 @@ public class RestaurantServiceImp implements RestaurantRepository {
 		for (Restaurant rest : restaurants) {
 			if (rest.getName().contains(name)) {
 
-				if (!sort.equals(null)) {
+				if (sort != null) {
 					try {
 						if (!sort.equals("topRestaurant")) {
 							Field privateField = rest.getSortingValues().getClass().getDeclaredField(sort);

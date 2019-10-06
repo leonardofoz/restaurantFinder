@@ -33,6 +33,7 @@
 					<input type="text" id="nameSearch" class="form-control" placeholder="Search">
 				</div>
 			</div>
+			<div class="table-responsive">
 			<table id="list" class="table">
 				<thead>
 					<tr>
@@ -47,6 +48,7 @@
 					
 				</tbody>
 			</table>
+			</div>
 		</div>
 
 
@@ -60,7 +62,7 @@
 
 		<script scoped>
 			$(document).ready(function() {
-				$.get('https://leorestaurantfinder.herokuapp.com/restaurant/list', (data) => {
+				$.get('http://192.168.25.3:9090/restaurant/', (data) => {
 					buildList(data);
 				});
 
@@ -70,7 +72,7 @@
 
 				function markFavorite(id, val) {
 					$.ajax({
-						url: 'https://leorestaurantfinder.herokuapp.com/restaurant/' + id,
+						url: 'http://192.168.25.3:9090/restaurant/' + id,
 						method: 'PATCH',
 						data: JSON.stringify({ favorite: val }),
 						dataType: 'json',
@@ -79,7 +81,7 @@
 				}
 
 				function refresh() {
-					$.get('https://leorestaurantfinder.herokuapp.com/restaurant/listWithParameters', 
+					$.get('http://192.168.25.3:9090/restaurant/', 
 						{
 							sort: $('#sortBy').val(),
 							nameSearch: $('#nameSearch').val()

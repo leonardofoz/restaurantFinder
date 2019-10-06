@@ -4,9 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
-
-//@SpringBootApplication(scanBasePackages = {"com.leonardo"}) 
-
+/**
+ * Main Class responsible for start the application
+ * @author lemoraes
+ * @since 05/10/2019
+ */
 @SpringBootConfiguration
 @EnableAutoConfiguration
 @ComponentScan("com.leonardo.*")

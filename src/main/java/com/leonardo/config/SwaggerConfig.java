@@ -14,7 +14,12 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
+/**
+ * Class responsible for automatically
+ * creating endpoint documentation.
+ * @author lemoraes
+ * @since 05/10/2019
+ */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -36,8 +41,8 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
     	 
         ApiInfo apiInfo = new ApiInfoBuilder()
-                .title ("Search Best Restaurants")
-                .description ("API responsible of search Best Restaurants")
+                .title ("Restaurants Search")
+                .description ("API responsible for searching for restaurants that most closely match customer preference.")
                 .license("Apache License Version 2.0")
                 .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
                 .termsOfServiceUrl("/service.html")

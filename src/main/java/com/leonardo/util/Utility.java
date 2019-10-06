@@ -1,12 +1,15 @@
 package com.leonardo.util;
 
-import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 import com.leonardo.model.Restaurant;
-
+/**
+ * Utiliy class responsible for organize the data
+ * @author lemoraes
+ * @since 05/10/2019
+ */
 public final class Utility {
 	
 	static String sortType = null;
@@ -74,18 +77,5 @@ public final class Utility {
 	        
 	    }
 	}
-	
-	  public static Object getValueOf(Object clazz, String lookingForValue)  
-		       throws Exception {  
-		    Field field = clazz.getClass().getField(lookingForValue);  
-		    Class clazzType = field.getType();  
-		    if (clazzType.toString().equals("Double"))  
-		      return field.getDouble(clazz);  
-		    else if (clazzType.toString().equals("Integer"))  
-		      return field.getInt(clazz);  
-		    // else other type ...  
-		    // and finally  
-		    return field.get(clazz);  
-		  }  
 
 }

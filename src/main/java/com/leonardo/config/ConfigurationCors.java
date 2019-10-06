@@ -8,6 +8,12 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+/**
+ * Class responsible for enabling endpoints
+ * to be used in any application.
+ * @author lemoraes
+ * @since 05/10/2019
+ */
 @Configuration
 public class ConfigurationCors {
 
