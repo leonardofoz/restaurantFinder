@@ -62,7 +62,7 @@
 
 		<script scoped>
 			$(document).ready(function() {
-				$.get('http://192.168.25.3:9090/restaurant/', (data) => {
+				$.get('https://leorestaurantfinder.herokuapp.com/restaurant/', (data) => {
 					buildList(data);
 				});
 
@@ -72,7 +72,7 @@
 
 				function markFavorite(id, val) {
 					$.ajax({
-						url: 'http://192.168.25.3:9090/restaurant/' + id,
+						url: 'https://leorestaurantfinder.herokuapp.com/restaurant/' + id,
 						method: 'PATCH',
 						data: JSON.stringify({ favorite: val }),
 						dataType: 'json',
@@ -81,7 +81,7 @@
 				}
 
 				function refresh() {
-					$.get('http://192.168.25.3:9090/restaurant/', 
+					$.get('https://leorestaurantfinder.herokuapp.com/restaurant/', 
 						{
 							sort: $('#sortBy').val(),
 							nameSearch: $('#nameSearch').val()
