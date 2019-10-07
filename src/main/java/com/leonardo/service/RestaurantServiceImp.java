@@ -70,7 +70,7 @@ public class RestaurantServiceImp implements RestaurantRepository {
 		List<Restaurant> listRest = new ArrayList<Restaurant>();
 		
 		for (Restaurant rest : restaurants) {
-			if (rest.getName().contains(name)) {
+			if (rest.getName().toUpperCase().contains(name.toUpperCase())) {
 				listRest.add(rest);
 			}
 		}
@@ -147,7 +147,7 @@ public class RestaurantServiceImp implements RestaurantRepository {
 		List<Restaurant> listRest = new ArrayList<Restaurant>();
 
 		for (Restaurant rest : restaurants) {
-			if (rest.getName().contains(name)) {
+			if (rest.getName().toUpperCase().contains(name.toUpperCase())) {
 
 				if (sort != null) {
 					try {

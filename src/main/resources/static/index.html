@@ -35,7 +35,7 @@
 			</div>
 			<div class="table-responsive">
 			<table id="list" class="table">
-				<thead>
+				<thead class="thead-dark">
 					<tr>
 						<th>Favorite</th>
 						<th>Name</th>
@@ -62,7 +62,7 @@
 
 		<script scoped>
 			$(document).ready(function() {
-				$.get('http://192.168.25.3:9090/restaurant/', (data) => {
+				$.get('https://leorestaurantfinder.herokuapp.com/restaurant/', (data) => {
 					buildList(data);
 				});
 
@@ -72,7 +72,7 @@
 
 				function markFavorite(id, val) {
 					$.ajax({
-						url: 'http://192.168.25.3:9090/restaurant/' + id,
+						url: 'https://leorestaurantfinder.herokuapp.com/restaurant/' + id,
 						method: 'PATCH',
 						data: JSON.stringify({ favorite: val }),
 						dataType: 'json',
@@ -81,7 +81,7 @@
 				}
 
 				function refresh() {
-					$.get('http://192.168.25.3:9090/restaurant/', 
+					$.get('https://leorestaurantfinder.herokuapp.com/restaurant/', 
 						{
 							sort: $('#sortBy').val(),
 							nameSearch: $('#nameSearch').val()
@@ -93,7 +93,14 @@
 					$('#list tbody tr').remove();
 					items.forEach((item) => {
 						let that = item;
+						//let id = item.id;
 						let row = document.createElement('tr');
+						if(item.status == "open")
+							row.className = "table-success";
+						if(item.status == "order ahead")
+							row.className = "table-warning";
+						if(item.status == "closed")
+							row.className = "table-danger";
 						let favCol = document.createElement('td');
 						let favCb = document.createElement('input');
 						favCb.onchange = function (e) {
