@@ -1,70 +1,102 @@
-$ tree
-. 
-+-- pom.xml
-+-- src
-    +-- main
-    �   +-- java
-    �   �   +-- com
-    �   �       +-- leonardo
-    �   �           +-- RestaurantFinderApplication.java
-    �   �           +-- config
-    �   �               +-- ConfigurationCors.java
-    �   �               +-- SwaggerConfig.java
-    �   �           +-- controller
-    �   �               +-- RestaurantController.java
-    �   �           +-- model
-    �   �               +-- Community.java
-    �   �               +-- Restaurant.java
-    �   �               +-- SortingValues.java
-    �   �               +-- TopRestaurant.java
-    �   �           +-- repository
-    �   �               +-- RestaurantRepository.java
-    �   �           +-- restaurantFinder
-    �   �               +-- RestaurantFinderApplication.java
-    �   �           +-- service
-    �   �               +-- RestaurantServiceImp.java
-    �   �           +-- util
-    �   �               +-- Status.java
-    �   �               +-- Utility.java
-    �   +-- resources
-    �       +-- json
-    �       	+-- restaurants.json
-    �       +-- static
-    �           +-- index.html
-    �           +-- doc
-    �       +-- application.properties
-    +-- test
-        +-- java
-		+-- com
-			+-- leonardo
-				+-- restaurantFinder
-					RestaurantFinderApplicationTests.java
 # Restaurant Search
 
 ### Description 
-The application shows a list of restaurants. On the top of the list, are the Favorite restaurants, if any were set as. The priority of the exhibition is Openings Status (Open, Order Ahead or Currently Closed), the Sorting List or by the Searching its names.
-   ##### Sorting list:
-   - Top Restaurants
-   - Best match
-   - Newest
-   - Rating average
-   - Distance
-   - Popularity
-   - Average product price
-   - Delivery costs
-   - Minimum costs
- 
+The application was developed to make life easier for the user when he/she is searching for a restaurant that best fits his/her will. The result is a list of restaurants previously ordered by Openings Status (Open, Order Ahead or Currently Closed), but he/she can bookmark his/her favorite restaurants, sort them by following a list of options, and search for the restaurant by name.
 
-### Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection. 
+### Technology Stack
+- Back-end language: Java 8
+- Framework: Spring Boot
+- Project Management: Maven
+- Front-end language: JavaScript + jQuery
+- Web Framework: Bootstrap
+- Server: Heroku (Continuous delivery)
+- Repository: GitHub
+- IDE: Spring Tool Suite 3
+- Documentation: Swagger(Rest API)
+- Automation Testing: Cucumber(BDD) + Selenium + JUnit
+- Automation Server: Jenkins (Continuous integration)
+
+### Application Structure
+```bash
+restaurantFinder                              # — Root of Application
+├───src                                       # — Source files
+│   ├───main
+│   │   ├───java
+│   │   │   └───com
+│   │   │       └───leonardo
+│   │   │           ├───config                # — Configuration classes
+│   │   │           ├───controller            # — Controller class
+│   │   │           ├───model                 # — Pojos classes
+│   │   │           ├───repository            # — Spring Data repository abstraction
+│   │   │           ├───restaurantFinder      # — Main class
+│   │   │           ├───service               # — Implementation of repository
+│   │   │           └───util                  # — Utiliy classes responsible for organize the data
+│   │   └───resources						  
+│   │       ├───json                          # — Application data file
+│   │       └───static						  
+│   │           ├───doc                       # — Javadoc of application
+│   │           └───tests_cases_reports       # — Cucumber test report
+│   └───test
+│       ├───java
+│       │   └───com
+│       │       └───leonardo
+│       │           └───restaurantFinder
+│       │               ├───runner            # —  Class for run Cucumber feature for Gherkin Scenario
+│       │               └───stepDefinition    # —  Classes with an expression that links it to one or more Gherkin steps.
+│       └───resources
+│           └───features                      # — Files where Cucumber tests are written creating a scenario
+└───target                                    # — Where the JAR and all other tests reports are created.
+```
+
+### Setup
+There are two ways to setup the application:
+
+1) Downloading the application at GIT: https://github.com/leonardofoz/restaurantFinder.git and configuring it into your favorite IDE like Spring Tool Suite.
+2) Downloading the jar file available at: https://drive.google.com/open?id=1opGGVRmRfEUVEXCc7cBUI_KZkTzmqJCw
+
+### Running
+It can be run online or locally:
+
+   Online: Due to the integration between GIT and Heroku, the deploy is automatically sent to https://leorestaurantfinder.herokuapp.com/
+
+   Local: Run the JAR file (previously downloaded) on the terminal:
+```
+java -jar restaurantFinder-1.0.jar
+```
+   The application will be started on port 9090 and can be accessed at: http://localhost:9090/
 
 ### Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README. 
+The user will have the option to view existing restaurants and will be able to sort them through combobox sorty By, as well as to favor the restaurants he likes best. The search by restaurant name can be done by the Search field.
+
+It will be shown in the search result the name of the restaurants, the current opening state, the
+selected sort, the sort value for a restaurant and if it's a favorite or not.
+
+Sorting list:
+- Top Restaurants
+- Best match
+- Newest
+- Rating average
+- Distance
+- Popularity
+- Average product price
+- Delivery costs
+- Minimum costs
+
+The ordering of results will always follow this order:
+Favorites> Openings state> Sorting> Search
+
+### Documentation
+Java Documentation:
+https://leorestaurantfinder.herokuapp.com/doc/index.html
+
+Rest API Interactive documentation:
+https://leorestaurantfinder.herokuapp.com/swagger-ui.html
+
+### Test Cases Reports:
+The tests were performed through scenarios with Cucumber and report generated by Jenkis. Details can be found at:
+https://leorestaurantfinder.herokuapp.com/tests_cases_reports/overview-features.html
 
 ### Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc. 
-### Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README. 
+Leonardo Silva Moraes - leonardofoz@gmail.com
 
-### Author
-Show your appreciation to those who have contributed to the project.
+
