@@ -12,7 +12,18 @@ The application shows a list of restaurants. On the top of the list, are the Fav
    - Average product price
    - Delivery costs
    - Minimum costs
- 
+
+### Technology Stack
+- Back-end language: Java 8
+- Framework: Spring Boot
+- Front-end language: JavaScript + jQuery
+- Server: Heroku (Continuous delivery)
+- Repository: GitHub
+- IDE: Spring Tool Suite 3
+- Documentation: Swagger(Rest API)
+- Automation Testing: Cucumber(BDD) + Selenium + JUnit
+- Automation Server: Jenkins (Continuous integration)
+
 ### Application Structure
 ```bash
 restaurantFinder                             # — Root of your theme
