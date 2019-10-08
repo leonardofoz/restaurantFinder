@@ -1,44 +1,4 @@
-$ tree
-. 
-+-- pom.xml
-+-- src
-    +-- main
-    �   +-- java
-    �   �   +-- com
-    �   �       +-- leonardo
-    �   �           +-- RestaurantFinderApplication.java
-    �   �           +-- config
-    �   �               +-- ConfigurationCors.java
-    �   �               +-- SwaggerConfig.java
-    �   �           +-- controller
-    �   �               +-- RestaurantController.java
-    �   �           +-- model
-    �   �               +-- Community.java
-    �   �               +-- Restaurant.java
-    �   �               +-- SortingValues.java
-    �   �               +-- TopRestaurant.java
-    �   �           +-- repository
-    �   �               +-- RestaurantRepository.java
-    �   �           +-- restaurantFinder
-    �   �               +-- RestaurantFinderApplication.java
-    �   �           +-- service
-    �   �               +-- RestaurantServiceImp.java
-    �   �           +-- util
-    �   �               +-- Status.java
-    �   �               +-- Utility.java
-    �   +-- resources
-    �       +-- json
-    �       	+-- restaurants.json
-    �       +-- static
-    �           +-- index.html
-    �           +-- doc
-    �       +-- application.properties
-    +-- test
-        +-- java
-		+-- com
-			+-- leonardo
-				+-- restaurantFinder
-					RestaurantFinderApplicationTests.java
+
 # Restaurant Search
 
 ### Description 
@@ -68,3 +28,34 @@ If you have ideas for releases in the future, it is a good idea to list them in 
 
 ### Author
 Show your appreciation to those who have contributed to the project.
+
+```bash
+├───src
+│   ├───main
+│   │   ├───java
+│   │   │   └───com
+│   │   │       └───leonardo
+│   │   │           ├───config
+│   │   │           ├───controller
+│   │   │           ├───model
+│   │   │           ├───repository
+│   │   │           ├───restaurantFinder
+│   │   │           ├───service
+│   │   │           └───util
+│   │   └───resources
+│   │       ├───features
+│   │       ├───json
+│   │       └───static
+│   │           ├───doc
+│   │           └───tests_cases_reports
+│   └───test
+│       ├───java
+│       │   └───com
+│       │       └───leonardo
+│       │           └───restaurantFinder
+│       │               ├───runner
+│       │               └───stepDefinition
+│       └───resources
+│           └───features
+└───target
+```
