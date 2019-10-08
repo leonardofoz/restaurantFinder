@@ -13,7 +13,7 @@ The application shows a list of restaurants. On the top of the list, are the Fav
    - Delivery costs
    - Minimum costs
  
-### Estrutura da aplicação
+### Application Structure
 ```bash
 restaurantFinder                             # — Root of your theme
 ├───src                                      # — Source files
@@ -47,13 +47,13 @@ restaurantFinder                             # — Root of your theme
 ```
 
 ### Installation
-A instalação poderá ser realizada de duas formas:
+There are two ways to run the application:
 
-1) Baixando o projeto do GIT: https://github.com/leonardofoz/restaurantFinder.git e configurando a aplicação, em seu IDE favorito, como Spring Boot Application.
-2) Baixando o jar da aplicação disponível no endereço: https://drive.google.com/open?id=1opGGVRmRfEUVEXCc7cBUI_KZkTzmqJCw
+1) Downloading the application at GIT: https://github.com/leonardofoz/restaurantFinder.git and configuring it into your favorite IDE like Spring Tool Suite.
+2) Downloading the jar file available at: https://drive.google.com/open?id=1opGGVRmRfEUVEXCc7cBUI_KZkTzmqJCw
 
-### Execução
-Para execução fiz questão de integrar o GIT com o Heroku, para quando tiver qualquer nova implementação automáticamente será realizado o deploy no servidor do HEROKU, no seguinte endereço: https://leorestaurantfinder.herokuapp.com/
+### Running
+I integrated GIT with Heroku in order we havePara execução fiz questão de integrar o GIT com o Heroku, para quando tiver qualquer nova implementação automáticamente será realizado o deploy no servidor do HEROKU, no seguinte endereço: https://leorestaurantfinder.herokuapp.com/
 
 Caso tenha interesse de executar localmente a aplicação é só executar o JAR no terminal:
 ```
