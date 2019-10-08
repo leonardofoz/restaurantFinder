@@ -17,6 +17,7 @@ The application shows a list of restaurants. On the top of the list, are the Fav
 - Back-end language: Java 8
 - Framework: Spring Boot
 - Front-end language: JavaScript + jQuery
+- Web Framework: Bootstrap
 - Server: Heroku (Continuous delivery)
 - Repository: GitHub
 - IDE: Spring Tool Suite 3
@@ -57,7 +58,7 @@ restaurantFinder                             # — Root of your theme
 └───target
 ```
 
-### Installation
+### Setup
 There are two ways to run the application:
 
 1) Downloading the application at GIT: https://github.com/leonardofoz/restaurantFinder.git and configuring it into your favorite IDE like Spring Tool Suite.
@@ -66,11 +67,11 @@ There are two ways to run the application:
 ### Running
 I integrated GIT with Heroku in order we havePara execução fiz questão de integrar o GIT com o Heroku, para quando tiver qualquer nova implementação automáticamente será realizado o deploy no servidor do HEROKU, no seguinte endereço: https://leorestaurantfinder.herokuapp.com/
 
-Caso tenha interesse de executar localmente a aplicação é só executar o JAR no terminal:
+In case of interest to run the application locally just run the JAR on the terminal:
 ```
 java -jar restaurantFinder-1.0.jar
 ```
-A aplicação será inicializada na porta 9090, podendo ser acessada no seguinte endereço: http://localhost:9090/
+The application will be started on port 9090 and can be accessed at: http://localhost:9090/
 
 ### Usage
 Forma de utilizar a aplicacao
