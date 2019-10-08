@@ -101,30 +101,30 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-            <groupId>net.masterthought</groupId>
-            <artifactId>maven-cucumber-reporting</artifactId>
-            <version>3.20.0</version>
-            <executions>
-                <execution>
-                    <id>execution</id>
-                    <phase>verify</phase>
-                    <goals>
-                        <goal>generate</goal>
-                    </goals>
+<!-- 			<plugin> -->
+<!--             <groupId>net.masterthought</groupId> -->
+<!--             <artifactId>maven-cucumber-reporting</artifactId> -->
+<!--             <version>3.20.0</version> -->
+<!--             <executions> -->
+<!--                 <execution> -->
+<!--                     <id>execution</id> -->
+<!--                     <phase>verify</phase> -->
+<!--                     <goals> -->
+<!--                         <goal>generate</goal> -->
+<!--                     </goals> -->
                     
-                    <configuration>
-                         <projectName>CucumberWebGui</projectName>
-                         <outputDirectory>${project.build.directory}/cucumber-JVM-reports</outputDirectory>
-                         <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
-                        <projectName>cucumber-jvm-example</projectName>
-			              <skippedFails>true</skippedFails>
-			              <enableFlashCharts>false</enableFlashCharts>
-			              <buildNumber>42</buildNumber>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
+<!--                     <configuration> -->
+<!--                          <projectName>CucumberWebGui</projectName> -->
+<!--                          <outputDirectory>${project.build.directory}/cucumber-JVM-reports</outputDirectory> -->
+<!--                          <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput> -->
+<!--                         <projectName>cucumber-jvm-example</projectName> -->
+<!-- 			              <skippedFails>true</skippedFails> -->
+<!-- 			              <enableFlashCharts>false</enableFlashCharts> -->
+<!-- 			              <buildNumber>42</buildNumber> -->
+<!--                     </configuration> -->
+<!--                 </execution> -->
+<!--             </executions> -->
+<!--         </plugin> -->
 		</plugins>
 	</build>
 
