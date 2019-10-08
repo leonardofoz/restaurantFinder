@@ -1,4 +1,3 @@
-
 # Restaurant Search
 
 ### Description 
