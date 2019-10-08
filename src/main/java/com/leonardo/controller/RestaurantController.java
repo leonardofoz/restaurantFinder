@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import com.leonardo.model.Restaurant;
 import com.leonardo.repository.RestaurantRepository;
@@ -35,9 +36,9 @@ public class RestaurantController {
 		List<Restaurant> restaurants = new ArrayList<Restaurant>();
 
 		if (nameSearch != null)
-			restaurants = restaurantRepository.findRestaurantsByName(nameSearch, sort);
+			restaurants = restaurantRepository.findRestaurantsByName(nameSearch, sort, RequestContextHolder.currentRequestAttributes().getSessionId());
 		else
-			restaurants = restaurantRepository.getRestaurant();
+			restaurants = restaurantRepository.getRestaurant(RequestContextHolder.currentRequestAttributes().getSessionId());
 
 		Utility.sortRestaurants(restaurants, sort);
 
@@ -47,13 +48,13 @@ public class RestaurantController {
 	@PatchMapping(value = "/{id}", headers = "Accept=application/json")
 	public ResponseEntity<Restaurant> updateRestaurantPartial(@PathVariable("id") int id,
 			@RequestBody Restaurant currentRestaurant) {
-
-		Restaurant restaurant = restaurantRepository.findById(id);
+		
+		Restaurant restaurant = restaurantRepository.findById(id,RequestContextHolder.currentRequestAttributes().getSessionId());
 		if (restaurant == null) {
 			return new ResponseEntity<Restaurant>(HttpStatus.NOT_FOUND);
 		}
 
-		restaurantRepository.updatePartially(currentRestaurant, id);
+		restaurantRepository.updatePartially(currentRestaurant, id, RequestContextHolder.currentRequestAttributes().getSessionId());
 		return new ResponseEntity<Restaurant>(restaurant, HttpStatus.OK);
 	}
 

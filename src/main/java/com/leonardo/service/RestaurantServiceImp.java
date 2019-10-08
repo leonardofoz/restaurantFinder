@@ -6,8 +6,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -24,21 +22,19 @@ import com.leonardo.util.Status;
 public class RestaurantServiceImp implements RestaurantRepository {
 
 	List<Restaurant> restaurants;
-	Community community;
-	HttpSession session;
-
-	public RestaurantServiceImp() throws JsonParseException, JsonMappingException, IOException {
-		restaurants = listRestaurants();
-	}
+	List<Community> communitys;
 
 	@Override
-	public List<Restaurant> getRestaurant() {
+	public List<Restaurant> getRestaurant(String session) {
+		getSessionRestaurants(session);
 		return restaurants;
 	}
-
+	
 	@Override
-	public Restaurant findById(int id) {
-		// TODO Auto-generated method stub
+	public Restaurant findById(int id, String session) {
+		
+		getSessionRestaurants(session);
+		
 		for (Restaurant restaurant : restaurants) {
 			if (restaurant.getId() == id) {
 				return restaurant;
@@ -47,10 +43,11 @@ public class RestaurantServiceImp implements RestaurantRepository {
 		return null;
 	}
 
-	public List<Restaurant> findRestaurantsByName(String name) {
-		List<Restaurant> listRest = new ArrayList<Restaurant>();
+	public List<Restaurant> findRestaurantsByName(String name, String session) {
 		
-		System.out.println(community);
+		getSessionRestaurants(session);
+		
+		List<Restaurant> listRest = new ArrayList<Restaurant>();
 		
 		for (Restaurant rest : restaurants) {
 			if (rest.getName().toUpperCase().contains(name.toUpperCase())) {
@@ -61,21 +58,24 @@ public class RestaurantServiceImp implements RestaurantRepository {
 	}
 
 	@Override
-	public void update(Restaurant restaurant) {
+	public void update(Restaurant restaurant, String session) {
 		int index = restaurants.indexOf(restaurant);
 		restaurants.set(index, restaurant);
+		
+		setSessionRestaurants(session);
 	}
 
-	public void updatePartially(Restaurant currentRestaurant, int id) {
+	public void updatePartially(Restaurant currentRestaurant, int id, String session) {
+		
 		for (Restaurant rest : restaurants) {
 			if (rest.getId() == id) {
 				rest.setFavorite(currentRestaurant.getFavorite());
-				update(rest);
+				update(rest, session);
 			}
 		}
 	}
 
-	private List<Restaurant> listRestaurants() throws JsonParseException, JsonMappingException, IOException {
+	private List<Restaurant> loadRestaurants() throws JsonParseException, JsonMappingException, IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
@@ -118,7 +118,10 @@ public class RestaurantServiceImp implements RestaurantRepository {
 	}
 
 	@Override
-	public List<Restaurant> findRestaurantsByName(String name, String sort) {
+	public List<Restaurant> findRestaurantsByName(String name, String sort, String session) {
+		
+		getSessionRestaurants(session);
+		
 		List<Restaurant> listRest = new ArrayList<Restaurant>();
 
 		for (Restaurant rest : restaurants) {
@@ -146,6 +149,60 @@ public class RestaurantServiceImp implements RestaurantRepository {
 			}
 		}
 		return listRest;
+	}
+	
+	private void getSessionRestaurants(String session){
+
+		Boolean newSession = true;
+		
+		if(communitys != null) {
+			for (Community community : communitys) {
+				if(community.getSession().equals(session)) {
+					
+					restaurants = community.getRestaurants();
+					newSession = false;
+					break;
+				}
+			}
+		}
+		
+		if(newSession) {
+			Community comunity = new Community();
+			List<Restaurant> newListSession = new ArrayList<Restaurant>();
+			try {
+				newListSession = loadRestaurants();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			comunity.setRestaurants(newListSession);
+			comunity.setSession(session);
+			
+			List<Community> listAuxCommunity = new ArrayList<Community>();
+			listAuxCommunity.add(comunity);
+			
+			if(communitys != null) {
+				communitys.addAll(listAuxCommunity);
+			} else {
+				communitys = new ArrayList<Community>();
+				communitys.addAll(listAuxCommunity);
+			}
+
+			restaurants = comunity.getRestaurants();
+		}
+
+	}
+
+	private void setSessionRestaurants(String session) {
+		
+		if (communitys != null) {
+			for (Community community : communitys) {
+				if (community.getSession().equals(session)) {
+					community.setRestaurants(restaurants);
+					break;
+				}
+			}
+		}
 	}
 
 }
