@@ -31,21 +31,21 @@ restaurantFinder                             # — Root of Application
 │   │   │           ├───restaurantFinder     # — Main class
 │   │   │           ├───service              # — Implementation of repository
 │   │   │           └───util                 # — Utiliy classes responsible for organize the data
-│   │   └───resources						             # 
-│   │       ├───json						             # — Application data file
-│   │       └───static						 
-│   │           ├───doc						           # — Javadoc of application
-│   │           └───tests_cases_reports		   # — Cucumber test report
+│   │   └───resources						 # 
+│   │       ├───json						 # — Application data file
+│   │       └───static						 # 
+│   │           ├───doc						 # — Javadoc of application
+│   │           └───tests_cases_reports		 # — Cucumber test report
 │   └───test
 │       ├───java
 │       │   └───com
 │       │       └───leonardo
 │       │           └───restaurantFinder
-│       │               ├───runner			    # —  Class for run Cucumber feature for Gherkin Scenario
+│       │               ├───runner			# —  Class for run Cucumber feature for Gherkin Scenario
 │       │               └───stepDefinition	# —  Classes with an expression that links it to one or more Gherkin steps.
 │       └───resources
-│           └───features					          # — Files where Cucumber tests are written creating a scenario
-└───target									                # — Where the JAR and all other tests reports are created.
+│           └───features					# — Files where Cucumber tests are written creating a scenario
+└───target									# — Where the JAR and all other tests reports are created.
 ```
 
 ### Setup
