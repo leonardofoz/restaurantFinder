@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" verbose="0" name="Failed suite [Surefire suite]" junit="true">
+  <test name="Surefire test(failed)" junit="true">
+    <classes>
+      <class name="com.leonardo.restaurantFinder.RestaurantFinderApplicationTests">
+        <methods>
+          <include name="getRestaurantByWrongName"/>
+          <include name="getAllRestaurants"/>
+          <include name="getRestaurantByNameAndSort"/>
+          <include name="getRestaurantByName"/>
+          <include name="updateFavoriteRestaurant"/>
+        </methods>
+      </class> <!-- com.leonardo.restaurantFinder.RestaurantFinderApplicationTests -->
+      <class name="com.leonardo.restaurantFinder.ListRestaurantsandsearchSushiTest">
+        <methods>
+          <include name="listRestaurantsandsearchSushi"/>
+        </methods>
+      </class> <!-- com.leonardo.restaurantFinder.ListRestaurantsandsearchSushiTest -->
+    </classes>
+  </test> <!-- Surefire test(failed) -->
+</suite> <!-- Failed suite [Surefire suite] -->

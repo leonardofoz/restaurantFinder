@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.leonardo.restaurantFinder.stepDefinition.SearchSushiTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.696 s - in com.leonardo.restaurantFinder.stepDefinition.SearchSushiTest

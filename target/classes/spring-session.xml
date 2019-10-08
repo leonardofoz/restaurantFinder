@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+		<property name="keySerializer">
+			<bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+		</property>
+		<property name="hashKeySerializer">
+			<bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+		</property>
+		<property name="connectionFactory" ref="redisConnectionFactory"/>
+	</bean>
+
+	<bean id="sessionRepository" class="org.springframework.session.data.redis.RedisOperationsSessionRepository">
+		<constructor-arg ref="redisTemplate"/>
+		<property name="defaultMaxInactiveInterval" value="${redis.session.expiration}"/>
+	</bean>
+	
+	<bean class="org.springframework.boot.context.embedded.FilterRegistrationBean">
+		<property name="name" value="cookieBasedSessionFilterRegistration"/>
+		<property name="filter">
+			<bean class="org.springframework.web.filter.DelegatingFilterProxy">
+				<constructor-arg>
+					<bean class="org.springframework.session.web.SessionRepositoryFilter">
+						<constructor-arg ref="sessionRepository"/>
+					</bean>
+				</constructor-arg>
+			</bean>
+		</property>
+		<property name="urlPatterns">
+			<list>
+				<value>/ui/*</value>
+			</list>
+		</property>
+	</bean>
+</beans>
