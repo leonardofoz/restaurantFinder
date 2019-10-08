@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -20,9 +21,10 @@ import com.leonardo.repository.RestaurantRepository;
 import com.leonardo.util.Utility;
 
 @RestController
+@Scope("request")
 @RequestMapping(value = { "/restaurant" })
 public class RestaurantController {
-	
+
 	@Autowired
 	RestaurantRepository restaurantRepository;
 
@@ -45,6 +47,7 @@ public class RestaurantController {
 	@PatchMapping(value = "/{id}", headers = "Accept=application/json")
 	public ResponseEntity<Restaurant> updateRestaurantPartial(@PathVariable("id") int id,
 			@RequestBody Restaurant currentRestaurant) {
+
 		Restaurant restaurant = restaurantRepository.findById(id);
 		if (restaurant == null) {
 			return new ResponseEntity<Restaurant>(HttpStatus.NOT_FOUND);

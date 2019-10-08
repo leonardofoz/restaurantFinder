@@ -6,6 +6,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -21,27 +23,12 @@ import com.leonardo.util.Status;
 @Service
 public class RestaurantServiceImp implements RestaurantRepository {
 
-	private static List<Restaurant> restaurants;
+	List<Restaurant> restaurants;
+	Community community;
+	HttpSession session;
 
-	static {
-		try {
-			restaurants = listRestaurants();
-		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void createRestaurant(Restaurant restaurant) {
-		// TODO Auto-generated method stub
-
+	public RestaurantServiceImp() throws JsonParseException, JsonMappingException, IOException {
+		restaurants = listRestaurants();
 	}
 
 	@Override
@@ -60,14 +47,10 @@ public class RestaurantServiceImp implements RestaurantRepository {
 		return null;
 	}
 
-	@Override
-	public Restaurant findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	public List<Restaurant> findRestaurantsByName(String name) {
 		List<Restaurant> listRest = new ArrayList<Restaurant>();
+		
+		System.out.println(community);
 		
 		for (Restaurant rest : restaurants) {
 			if (rest.getName().toUpperCase().contains(name.toUpperCase())) {
@@ -83,12 +66,6 @@ public class RestaurantServiceImp implements RestaurantRepository {
 		restaurants.set(index, restaurant);
 	}
 
-	@Override
-	public void deleteRestaurantById(int id) {
-		// TODO Auto-generated method stub
-
-	}
-
 	public void updatePartially(Restaurant currentRestaurant, int id) {
 		for (Restaurant rest : restaurants) {
 			if (rest.getId() == id) {
@@ -96,10 +73,9 @@ public class RestaurantServiceImp implements RestaurantRepository {
 				update(rest);
 			}
 		}
-
 	}
 
-	private static List<Restaurant> listRestaurants() throws JsonParseException, JsonMappingException, IOException {
+	private List<Restaurant> listRestaurants() throws JsonParseException, JsonMappingException, IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
@@ -138,7 +114,6 @@ public class RestaurantServiceImp implements RestaurantRepository {
 			newListRestaurants.add(rest);
 
 		}
-
 		return newListRestaurants;
 	}
 

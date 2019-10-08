@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @author lemoraes
  * @since 05/10/2019
  */
+
 @SpringBootConfiguration
 @EnableAutoConfiguration
 @ComponentScan("com.leonardo.*")

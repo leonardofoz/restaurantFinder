@@ -57,15 +57,74 @@
 			<version>2.6.1</version>
 			<scope>compile</scope>
 		</dependency>
-		
+		<dependency>
+		    <groupId>info.cukes</groupId>
+		    <artifactId>cucumber-java</artifactId>
+		    <version>1.2.5</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>info.cukes</groupId>
+		    <artifactId>cucumber-junit</artifactId>
+		    <version>1.2.5</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.seleniumhq.selenium</groupId>
+		    <artifactId>selenium-chrome-driver</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>28.0-jre</version>
+		</dependency>		
+		<dependency>
+		  <groupId>net.masterthought</groupId>
+		  <artifactId>cucumber-reporting</artifactId>
+		  <version>4.2.3</version>
+		</dependency>
+        <dependency>
+		  <groupId>io.cucumber</groupId>
+		  <artifactId>cucumber-spring</artifactId>
+		  <version>4.2.0</version>
+		  <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>io.rest-assured</groupId>
+		    <artifactId>rest-assured</artifactId>
+		    <scope>test</scope>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+            <groupId>net.masterthought</groupId>
+            <artifactId>maven-cucumber-reporting</artifactId>
+            <version>3.20.0</version>
+            <executions>
+                <execution>
+                    <id>execution</id>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>generate</goal>
+                    </goals>
+                    
+                    <configuration>
+                         <projectName>CucumberWebGui</projectName>
+                         <outputDirectory>${project.build.directory}/cucumber-JVM-reports</outputDirectory>
+                         <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+                        <projectName>cucumber-jvm-example</projectName>
+			              <skippedFails>true</skippedFails>
+			              <enableFlashCharts>false</enableFlashCharts>
+			              <buildNumber>42</buildNumber>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
 		</plugins>
 	</build>
 
