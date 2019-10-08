@@ -16,6 +16,22 @@ The application shows a list of restaurants. On the top of the list, are the Fav
  
 
 ### Installation
+A instalação poderá ser realizada de duas formas:
+
+1) Baixando o projeto do GIT: https://github.com/leonardofoz/restaurantFinder.git e configurando a aplicação, em seu IDE favorito, como Spring Boot Application.
+2) Baixando o jar da aplicação disponível no endereço: https://drive.google.com/open?id=1opGGVRmRfEUVEXCc7cBUI_KZkTzmqJCw
+
+### Execução
+Para execução fiz questão de integrar o GIT com o Heroku, para quando tiver qualquer nova implementação automáticamente será realizado o deploy no servidor do HEROKU, no seguinte endereço: https://leorestaurantfinder.herokuapp.com/
+
+Caso tenha interesse de executar localmente a aplicação é só executar o JAR no terminal:
+```
+java -jar restaurantFinder-1.0.jar
+```
+A aplicação será inicializada na porta 9090, podendo ser acessada no seguinte endereço: http://localhost:9090/
+
+
+
 Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection. 
 
 ### Usage
