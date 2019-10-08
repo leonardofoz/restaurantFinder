@@ -1,17 +1,7 @@
 # Restaurant Search
 
 ### Description 
-The application shows a list of restaurants. On the top of the list, are the Favorite restaurants, if any were set as. The priority of the exhibition is Openings Status (Open, Order Ahead or Currently Closed), the Sorting List or by the Searching its names.
-   ##### Sorting list:
-   - Top Restaurants
-   - Best match
-   - Newest
-   - Rating average
-   - Distance
-   - Popularity
-   - Average product price
-   - Delivery costs
-   - Minimum costs
+The application was developed to make life easier for the user when he/she is searching for a restaurant that best fits his/her will. The result is a list of restaurants previously ordered by Openings Status (Open, Order Ahead or Currently Closed), but he/she can bookmark his/her favorite restaurants, sort them by following a list of options, and search for the restaurant by name.
 
 ### Technology Stack
 - Back-end language: Java 8
@@ -78,6 +68,17 @@ The user will have the option to view existing restaurants and will be able to s
 
 It will be shown in the search result the name of the restaurants, the current opening state, the
 selected sort, the sort value for a restaurant and if it's a favorite or not.
+
+Sorting list:
+- Top Restaurants
+- Best match
+- Newest
+- Rating average
+- Distance
+- Popularity
+- Average product price
+- Delivery costs
+- Minimum costs
 
 The ordering of results will always follow this order:
 Favorites> Openings state> Sorting> Search
