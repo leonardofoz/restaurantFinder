@@ -49,19 +49,21 @@ restaurantFinder                              # — Root of Application
 ```
 
 ### Setup
-There are two ways to run the application:
+There are two ways to setup the application:
 
 1) Downloading the application at GIT: https://github.com/leonardofoz/restaurantFinder.git and configuring it into your favorite IDE like Spring Tool Suite.
 2) Downloading the jar file available at: https://drive.google.com/open?id=1opGGVRmRfEUVEXCc7cBUI_KZkTzmqJCw
 
 ### Running
-The integration between GIT and Heroku exists and automatically deploys to: https://leorestaurantfinder.herokuapp.com/
+It can be run online or locally:
 
-In case of interest to run the application locally just run the JAR file (previously downloaded) on the terminal:
+   Online: Due to the integration between GIT and Heroku, the deploy is automatically sent to https://leorestaurantfinder.herokuapp.com/
+
+   Local: Run the JAR file (previously downloaded) on the terminal:
 ```
 java -jar restaurantFinder-1.0.jar
 ```
-The application will be started on port 9090 and can be accessed at: http://localhost:9090/
+   The application will be started on port 9090 and can be accessed at: http://localhost:9090/
 
 ### Usage
 The user will have the option to view existing restaurants and will be able to sort them through combobox sorty By, as well as to favor the restaurants he likes best. The search by restaurant name can be done by the Search field.
