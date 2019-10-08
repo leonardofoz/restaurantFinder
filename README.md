@@ -6,6 +6,7 @@ The application was developed to make life easier for the user when he/she is se
 ### Technology Stack
 - Back-end language: Java 8
 - Framework: Spring Boot
+- Project Management: Maven
 - Front-end language: JavaScript + jQuery
 - Web Framework: Bootstrap
 - Server: Heroku (Continuous delivery)
