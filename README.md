@@ -1,5 +1,5 @@
 $ tree
-.
+. 
 +-- pom.xml
 +-- src
     +-- main
