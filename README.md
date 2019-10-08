@@ -18,35 +18,34 @@ The application was developed to make life easier for the user when he/she is se
 
 ### Application Structure
 ```bash
-restaurantFinder                             # — Root of your theme
+restaurantFinder                             # — Root of Application
 ├───src                                      # — Source files
 │   ├───main
 │   │   ├───java
 │   │   │   └───com
 │   │   │       └───leonardo
 │   │   │           ├───config               # — Configuration classes
-│   │   │           ├───controller           # Controller class
-│   │   │           ├───model                # Pojos classes
-│   │   │           ├───repository           # Spring Data repository abstraction
-│   │   │           ├───restaurantFinder     # Main class
-│   │   │           ├───service              # Implementation of repository
-│   │   │           └───util                 # Utiliy classes responsible for organize the data
-│   │   └───resources
-│   │       ├───features
-│   │       ├───json
-│   │       └───static
-│   │           ├───doc
-│   │           └───tests_cases_reports
+│   │   │           ├───controller           # — Controller class
+│   │   │           ├───model                # — Pojos classes
+│   │   │           ├───repository           # — Spring Data repository abstraction
+│   │   │           ├───restaurantFinder     # — Main class
+│   │   │           ├───service              # — Implementation of repository
+│   │   │           └───util                 # — Utiliy classes responsible for organize the data
+│   │   └───resources						             # 
+│   │       ├───json						             # — Application data file
+│   │       └───static						 
+│   │           ├───doc						           # — Javadoc of application
+│   │           └───tests_cases_reports		   # — Cucumber test report
 │   └───test
 │       ├───java
 │       │   └───com
 │       │       └───leonardo
 │       │           └───restaurantFinder
-│       │               ├───runner
-│       │               └───stepDefinition
+│       │               ├───runner			    # —  Class for run Cucumber feature for Gherkin Scenario
+│       │               └───stepDefinition	# —  Classes with an expression that links it to one or more Gherkin steps.
 │       └───resources
-│           └───features
-└───target
+│           └───features					          # — Files where Cucumber tests are written creating a scenario
+└───target									                # — Where the JAR and all other tests reports are created.
 ```
 
 ### Setup
