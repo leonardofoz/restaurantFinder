@@ -78,8 +78,8 @@ The Sorting list:
 - Delivery costs
 - Minimum costs
 
-The ordering of results will always follow this order:
-Favorites> Openings state> Sorting> Search
+The results will follow this order: 
+Favorites > Openings state > Sorting > Search
 
 ### Documentation
 Java Documentation:
