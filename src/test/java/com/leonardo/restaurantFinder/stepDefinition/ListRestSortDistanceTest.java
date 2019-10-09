@@ -22,7 +22,7 @@ public class ListRestSortDistanceTest {
 	private String ENDPOINT_GET = "https://leorestaurantfinder.herokuapp.com/restaurant/";
   
 	@Given("^Open browser and access the application at HEROKU and looking$")
-	public void open_browser_and_access_the_application_at_HEROKU_and_looking() throws Throwable {
+	public void open_browser_and_access_the_application_at_HEROKU_and__looking() throws Throwable {
 		request = given().param("","");
 	}
 

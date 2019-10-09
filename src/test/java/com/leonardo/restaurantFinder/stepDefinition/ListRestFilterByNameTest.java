@@ -43,6 +43,7 @@ public class ListRestFilterByNameTest {
 	public void user_should_receive_the_list_of_restaurants_with_sushi_in_the_name(int quantityRestaurant) throws Throwable {
 
 		assertThat(quantityRestaurant, is(response.andReturn().jsonPath().getList("$").size()));
+
 	}
 
 }
