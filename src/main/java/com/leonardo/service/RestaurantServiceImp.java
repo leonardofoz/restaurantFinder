@@ -24,10 +24,6 @@ public class RestaurantServiceImp implements RestaurantRepository {
 	List<Restaurant> restaurants;
 	List<Community> communitys;
 	
-	public RestaurantServiceImp() throws JsonParseException, JsonMappingException, IOException {
-		restaurants = loadRestaurants();
-	}
-
 	@Override
 	public List<Restaurant> getRestaurant(String session) {
 		getSessionRestaurants(session);
