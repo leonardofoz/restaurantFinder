@@ -59,7 +59,7 @@ It can be run online or locally:
 Online: Due to the integration between GIT and Heroku, the deploy is automatically sent to https://leorestaurantfinder.herokuapp.com/
 
 Local: Run the JAR file (previously downloaded) on the terminal:
-``java -jar restaurantFinder-1.0.jar`
+```java -jar restaurantFinder-1.0.jar```   
 The application will be started on port 9090 and can be accessed at: http://localhost:9090/
 
 ### Usage
