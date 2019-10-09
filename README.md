@@ -1,7 +1,7 @@
 # Restaurant Search
 
 ### Description 
-The application was developed to make life easier for the user when he/she is searching for a restaurant that best fits his/her will. The result is a list of restaurants previously ordered by Openings Status (Open, Order Ahead or Currently Closed), but he/she can bookmark his/her favorite restaurants, sort them by following a list of options, and search for the restaurant by name.
+The application was developed to make the user's life easier when he is looking for a restaurant that best suits his wishes. It shows a list of restaurants sorted initially by the open status. User can select his favorite restaurant and it will be shown at the top of the list. Also, the search can be done just by typing the restaurant name. There are some filters that can be chosen for a better result.
 
 ### Technology Stack
 - Back-end language: Java 8
@@ -50,28 +50,24 @@ restaurantFinder                              # — Root of Application
 
 ### Setup
 There are two ways to setup the application:
+1.	Downloading the application at GIT and configuring it into your favorite IDE like Spring Tool Suite: https://github.com/leonardofoz/restaurantFinder.git 
 
-1) Downloading the application at GIT: https://github.com/leonardofoz/restaurantFinder.git and configuring it into your favorite IDE like Spring Tool Suite.
-2) Downloading the jar file available at: https://drive.google.com/open?id=1opGGVRmRfEUVEXCc7cBUI_KZkTzmqJCw
+2.	Downloading the jar file available at: https://drive.google.com/open?id=1opGGVRmRfEUVEXCc7cBUI_KZkTzmqJCw
 
 ### Running
-It can be run online or locally:
+It can be run online or locally:  
+   - Online: Due to the integration between GIT and Heroku, the deploy is automatically sent to https://leorestaurantfinder.herokuapp.com/
 
-   Online: Due to the integration between GIT and Heroku, the deploy is automatically sent to https://leorestaurantfinder.herokuapp.com/
-
-   Local: Run the JAR file (previously downloaded) on the terminal:
-```
-java -jar restaurantFinder-1.0.jar
-```
-   The application will be started on port 9090 and can be accessed at: http://localhost:9090/
+   - Local: Run the JAR file (previously downloaded) on the terminal:
+```java -jar restaurantFinder-1.0.jar```   
+The application will be started on port 9090 and can be accessed at: http://localhost:9090/
 
 ### Usage
-The user will have the option to view existing restaurants and will be able to sort them through combobox sorty By, as well as to favor the restaurants he likes best. The search by restaurant name can be done by the Search field.
+The user has the option to view the existing restaurants and can filter them through combobox where there are nine options to sorting. 
+You can search the restaurant by its name in the search field and also, set as favorite the ones you like best.
+In the search result will be shown the restaurant name, the current status of opening, the selected filter and the rating. If any was set as favorite, it will be at the top of the list.
 
-It will be shown in the search result the name of the restaurants, the current opening state, the
-selected sort, the sort value for a restaurant and if it's a favorite or not.
-
-Sorting list:
+The Sorting list:
 - Top Restaurants
 - Best match
 - Newest
@@ -82,8 +78,8 @@ Sorting list:
 - Delivery costs
 - Minimum costs
 
-The ordering of results will always follow this order:
-Favorites> Openings state> Sorting> Search
+The results will follow this order: 
+Favorites > Openings state > Sorting > Search
 
 ### Documentation
 Java Documentation:
