@@ -21,8 +21,8 @@ import com.leonardo.util.Status;
 @Service
 public class RestaurantServiceImp implements RestaurantRepository {
 
-	List<Restaurant> restaurants;
-	List<Community> communitys;
+	private List<Restaurant> restaurants;
+	private List<Community> communitys;
 	
 	@Override
 	public List<Restaurant> getRestaurant(String session) {
@@ -47,7 +47,7 @@ public class RestaurantServiceImp implements RestaurantRepository {
 		
 		getSessionRestaurants(session);
 		
-		List<Restaurant> listRest = new ArrayList<Restaurant>();
+		List<Restaurant> listRest = new ArrayList<>();
 		
 		for (Restaurant rest : restaurants) {
 			if (rest.getName().toUpperCase().contains(name.toUpperCase())) {
@@ -75,7 +75,7 @@ public class RestaurantServiceImp implements RestaurantRepository {
 		}
 	}
 
-	private List<Restaurant> loadRestaurants() throws JsonParseException, JsonMappingException, IOException {
+	private List<Restaurant> loadRestaurants() throws IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
@@ -83,12 +83,11 @@ public class RestaurantServiceImp implements RestaurantRepository {
 
 		Community comunity = objectMapper.readValue(is, Community.class);
 
-		List<Restaurant> newListRestaurants = new ArrayList<Restaurant>();
+		List<Restaurant> newListRestaurants = new ArrayList<>();
 
 		int i = 1;
 		for (Restaurant restaurant : comunity.getRestaurants()) {
-			Restaurant rest = new Restaurant();
-			rest = restaurant;
+			Restaurant rest = restaurant;
 			rest.setFavorite(false);
 			rest.setId(i++);
 			
@@ -99,14 +98,13 @@ public class RestaurantServiceImp implements RestaurantRepository {
 			else if(restaurant.getStatus().equals(Status.ORDER_AHEAD.getStatus()))
 				rest.setStatusImportance(Status.ORDER_AHEAD.getImportance());
 
-			SortingValues sort = new SortingValues();
 			TopRestaurant top = new TopRestaurant();
 
 			top.setTopRestaurant(
 					(restaurant.getSortingValues().getDistance() * restaurant.getSortingValues().getPopularity())
 							+ restaurant.getSortingValues().getRatingAverage());
 
-			sort = restaurant.getSortingValues();
+			SortingValues sort = restaurant.getSortingValues();
 			sort.setTopRestaurant(top);
 
 			rest.setSortingValues(sort);
@@ -122,7 +120,7 @@ public class RestaurantServiceImp implements RestaurantRepository {
 		
 		getSessionRestaurants(session);
 		
-		List<Restaurant> listRest = new ArrayList<Restaurant>();
+		List<Restaurant> listRest = new ArrayList<>();
 
 		for (Restaurant rest : restaurants) {
 			if (rest.getName().toUpperCase().contains(name.toUpperCase())) {
@@ -153,7 +151,7 @@ public class RestaurantServiceImp implements RestaurantRepository {
 	
 	private void getSessionRestaurants(String session){
 
-		Boolean newSession = true;
+		boolean newSession = true;
 		
 		if(communitys != null) {
 			for (Community community : communitys) {
@@ -168,7 +166,7 @@ public class RestaurantServiceImp implements RestaurantRepository {
 		
 		if(newSession) {
 			Community comunity = new Community();
-			List<Restaurant> newListSession = new ArrayList<Restaurant>();
+			List<Restaurant> newListSession = new ArrayList<>();
 			try {
 				newListSession = loadRestaurants();
 			} catch (IOException e) {
@@ -178,13 +176,13 @@ public class RestaurantServiceImp implements RestaurantRepository {
 			comunity.setRestaurants(newListSession);
 			comunity.setSession(session);
 			
-			List<Community> listAuxCommunity = new ArrayList<Community>();
+			List<Community> listAuxCommunity = new ArrayList<>();
 			listAuxCommunity.add(comunity);
 			
 			if(communitys != null) {
 				communitys.addAll(listAuxCommunity);
 			} else {
-				communitys = new ArrayList<Community>();
+				communitys = new ArrayList<>();
 				communitys.addAll(listAuxCommunity);
 			}
 

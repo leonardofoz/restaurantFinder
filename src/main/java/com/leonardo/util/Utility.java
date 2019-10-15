@@ -12,7 +12,7 @@ import com.leonardo.model.Restaurant;
  */
 public final class Utility {
 	
-	static String sortType = null;
+	private static String sortType = null;
 	
 	public static List<Restaurant> sortRestaurants(List<Restaurant> restaurants, String sortType) {
 		

@@ -1,15 +1,16 @@
 package com.leonardo.util;
 
+
 public enum Status {
 	
 	OPEN("open",1),
 	ORDER_AHEAD("order ahead",2),
 	CLOSED("closed",3);
-     
+
     private String status;
     private int importance; 
 
-    private Status(String name, int importance) {
+    Status(String name, int importance) {
 		this.status = name;
 		this.importance = importance;
 	}
